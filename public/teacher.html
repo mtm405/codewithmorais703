@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher View | Code with Morais</title>
+  <meta name="description" content="Teacher page for monitoring student work and progress.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Code with Morais</a>
+    <nav class="nav-links">
+      <a href="/dashboard" data-scope="student admin">Dashboard</a>
+      <a href="/reference" data-scope="student admin">Reference</a>
+      <a href="/teacher" data-scope="admin">Teacher</a>
+      <a href="/assignments" data-scope="admin">Assignments</a>
+      <a href="/practice-bank" data-scope="admin">Practice Bank</a>
+    </nav>
+    <div id="auth-slot" class="auth-slot"></div>
+  </header>
+
+  <main class="shell stack">
+    <section class="hero">
+      <p class="eyebrow">Teacher Analytics</p>
+      <h1>Teacher Review Dashboard</h1>
+      <p class="lead">Students appear here after first login. Select a student to inspect all saved projects and review code.</p>
+    </section>
+
+    <section class="card table-wrap">
+      <h2>Student Roster</h2>
+      <p class="muted">Each student record is created on first successful login.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Projects</th>
+            <th>Objectives</th>
+            <th>Last Active</th>
+            <th>Open</th>
+          </tr>
+        </thead>
+        <tbody id="student-rows">
+          <tr><td colspan="7" class="muted">Sign in with the teacher email to load data.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card table-wrap">
+      <h2 id="student-projects-title">Selected Student Projects</h2>
+      <p id="student-projects-state" class="muted">Choose a student above to load all saved projects.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Saves</th>
+            <th>Updated</th>
+            <th>Status</th>
+            <th>Grade</th>
+            <th>Review</th>
+          </tr>
+        </thead>
+        <tbody id="student-project-rows">
+          <tr><td colspan="6" class="muted">No student selected yet.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card table-wrap">
+      <h2>Bell Ringer Submissions</h2>
+      <p id="bell-ringer-state" class="muted">Choose a student above to load recent submissions.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Score</th>
+            <th>Submitted</th>
+            <th>Answers</th>
+          </tr>
+        </thead>
+        <tbody id="bell-ringer-rows">
+          <tr><td colspan="4" class="muted">No student selected yet.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card stack">
+      <h2 id="review-title">Project Review</h2>
+      <p id="review-state" class="muted">Select a project to load its saved HTML and CSS.</p>
+      <div class="review-grid">
+        <article>
+          <h3>index.html</h3>
+          <pre id="student-html" class="code-block"></pre>
+        </article>
+        <article>
+          <h3>styles.css</h3>
+          <pre id="student-css" class="code-block"></pre>
+        </article>
+      </div>
+      <article>
+        <h3>Preview</h3>
+        <iframe id="student-preview" class="preview-frame" title="Student workspace preview"></iframe>
+      </article>
+    </section>
+
+    <section class="card stack">
+      <h2>Teacher Feedback and Grading</h2>
+      <p class="muted">Select a project above, then save notes students can see in Projects and IDE.</p>
+
+      <div class="feedback-grid">
+        <label>
+          <span class="muted">Status</span>
+          <select id="feedback-status" class="project-input">
+            <option value="needs-fixes">Needs Fixes</option>
+            <option value="resubmit">Resubmit</option>
+            <option value="complete">Complete</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="muted">Grade</span>
+          <input id="feedback-grade" class="project-input" type="text" placeholder="Example: 85 or B+">
+        </label>
+      </div>
+
+      <label class="feedback-checkbox">
+        <input id="feedback-late" type="checkbox">
+        <span>Mark as Late</span>
+      </label>
+
+      <label>
+        <span class="muted">Feedback (bugs and improvements)</span>
+        <textarea id="feedback-text" class="code-input" rows="7" spellcheck="false" placeholder="Example: The nav links overlap on mobile. Fix spacing and test under 740px."></textarea>
+      </label>
+
+      <label>
+        <span class="muted">Next Steps</span>
+        <textarea id="feedback-next-steps" class="code-input" rows="4" spellcheck="false" placeholder="Example: 1) Add semantic header/main/footer 2) Improve contrast 3) Re-submit by Friday"></textarea>
+      </label>
+
+      <div class="actions">
+        <button id="generate-feedback" class="btn btn-secondary" type="button">AI Draft Feedback</button>
+        <button id="save-feedback" class="btn btn-primary" type="button">Save Feedback</button>
+        <span id="feedback-state" class="status-chip">Select a project to start grading.</span>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="/js/teacher-page.js"></script>
+</body>
+</html>

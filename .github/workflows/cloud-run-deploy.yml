@@ -1,0 +1,38 @@
+name: Build and deploy to Cloud Run
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        project_id: ${{ secrets.GCP_PROJECT }}
+
+    - name: Configure Docker to use gcloud as a credential helper
+      run: |
+        gcloud --quiet auth configure-docker
+
+    - name: Build and push container image
+      run: |
+        IMAGE=gcr.io/${{ secrets.GCP_PROJECT }}/student-activities:${{ github.sha }}
+        docker build -t $IMAGE .
+        docker push $IMAGE
+
+    - name: Deploy to Cloud Run
+      run: |
+        IMAGE=gcr.io/${{ secrets.GCP_PROJECT }}/student-activities:${{ github.sha }}
+        gcloud run deploy student-activities \
+          --image $IMAGE \
+          --region us-central1 \
+          --platform managed \
+          --allow-unauthenticated

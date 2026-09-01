@@ -1,0 +1,32 @@
+{
+  "name": "Python Flask Firebase DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/powershell:1": {}
+  },
+  "forwardPorts": [8080],
+  "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt && npm install -g firebase-tools && curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb && sudo dpkg -i cloudflared.deb || true",
+  "customizations": {
+    "vscode": {
+      "settings": {
+      
+        "python.pythonPath": "/usr/local/bin/python",
+        "python.formatting.provider": "black",
+        "python.linting.enabled": true,
+        "python.linting.flake8Enabled": true
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker",
+        "ms-toolsai.jupyter",
+        "ms-vscode-remote.remote-containers",
+        "firebase.firebase-vscode",
+        "GitHub.vscode-pull-request-github"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}

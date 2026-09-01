@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code with Morais | HTML and CSS</title>
+  <meta name="description" content="Learn HTML and CSS with guided modules, hands-on challenges, and a cloud-synced in-browser IDE.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Code with Morais</a>
+    <nav class="nav-links">
+      <a href="/dashboard" data-scope="student admin">Dashboard</a>
+      <a href="/reference" data-scope="student admin">Reference</a>
+      <a href="/teacher" data-scope="admin">Teacher</a>
+      <a href="/assignments" data-scope="admin">Assignments</a>
+      <a href="/practice-bank" data-scope="admin">Practice Bank</a>
+    </nav>
+    <div id="auth-slot" class="auth-slot"></div>
+  </header>
+
+  <main class="shell">
+    <section class="hero hero-home">
+      <div class="hero-particle-layer" aria-hidden="true">
+        <canvas class="hero-particle-canvas"></canvas>
+      </div>
+
+      <div class="hero-home-grid">
+        <div>
+          <p class="eyebrow">ITS HTML + CSS Track</p>
+          <h1>Build Real Web Skills, Not Just Slides</h1>
+          <p class="lead">
+            Students sign in once, launch projects in seconds, and keep every save in the cloud.
+            Teachers can then review progress, feedback, and next steps in one place.
+          </p>
+          <div class="actions hero-home-actions">
+            <button id="hero-login-btn" class="btn btn-primary" type="button">Student Login to Start</button>
+            <a id="hero-projects-link" class="btn btn-secondary" href="/dashboard" hidden>Open Dashboard</a>
+            <a id="hero-ide-link" class="btn btn-secondary" href="/ide" hidden>Open IDE</a>
+          </div>
+        </div>
+
+        <aside class="hero-signal-card" aria-label="Class platform highlights">
+          <p class="hero-signal-title">Today in Class</p>
+          <ul class="hero-signal-list">
+            <li>Launch any project from one student dashboard.</li>
+            <li>Autosave protects work on every step.</li>
+            <li>Teacher review supports clear next-step feedback.</li>
+          </ul>
+          <div class="hero-signal-stats">
+            <span class="status-chip">6 Core Modules</span>
+            <span class="status-chip">Cloud Saved</span>
+            <span class="status-chip">Feedback Ready</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="curriculum-home">
+      <div class="grid curriculum-grid">
+      <article class="card">
+        <h2>1. HTML Fundamentals</h2>
+        <p>Metadata, page structure, and valid HTML syntax.</p>
+      </article>
+      <article class="card">
+        <h2>2. CSS Fundamentals</h2>
+        <p>Selectors, precedence, and clean rule sets.</p>
+      </article>
+      <article class="card">
+        <h2>3. Document Structure</h2>
+        <p>Semantic elements, forms, tables, and links.</p>
+      </article>
+      <article class="card">
+        <h2>4. Multimedia</h2>
+        <p>Images, audio, video, and embedded content.</p>
+      </article>
+      <article class="card">
+        <h2>5. Webpage Styling</h2>
+        <p>Layout, text, borders, and responsive design.</p>
+      </article>
+      <article class="card">
+        <h2>6. Accessibility and Testing</h2>
+        <p>Readability, contrast, and markup quality checks.</p>
+      </article>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="/js/home-page.js"></script>
+</body>
+</html>

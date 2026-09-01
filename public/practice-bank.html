@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Bank | Code with Morais</title>
+  <meta name="description" content="Teacher-only library of reusable HTML/CSS classroom practices with printable guides and teacher keys.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Code with Morais</a>
+    <nav class="nav-links">
+      <a href="/dashboard" data-scope="student admin">Dashboard</a>
+      <a href="/reference" data-scope="student admin">Reference</a>
+      <a href="/teacher" data-scope="admin">Teacher</a>
+      <a href="/assignments" data-scope="admin">Assignments</a>
+      <a href="/practice-bank" data-scope="admin">Practice Bank</a>
+    </nav>
+    <div id="auth-slot" class="auth-slot"></div>
+  </header>
+
+  <main class="shell stack">
+    <section class="hero">
+      <p class="eyebrow">Teacher Tools</p>
+      <h1>Practice Bank</h1>
+      <p class="lead">A simple classroom workflow: reset to beginner practice set, choose one activity, then publish to all students or print the worksheet.</p>
+      <div class="actions">
+        <button id="reset-practice-bank" class="btn btn-primary" type="button">Reset Bank: Delete All + Load Beginner Set</button>
+        <button id="seed-practice-bank" class="btn btn-secondary" type="button">Load Master Class Project</button>
+        <button id="refresh-practice-bank" class="btn btn-secondary" type="button">Refresh Practice List</button>
+        <a href="/assignments" class="btn btn-secondary">Open Assignment Publisher</a>
+        <span id="practice-state" class="status-chip">Teacher sign-in required.</span>
+      </div>
+    </section>
+
+    <section class="card stack">
+      <h2>Step 1: Find Activity</h2>
+      <p class="muted">Select a saved classroom activity from your database.</p>
+      <div class="practice-search-row">
+        <input id="practice-search" class="project-input" type="text" placeholder="Search by title, topic, or keyword">
+      </div>
+      <div class="practice-workspace">
+        <aside>
+          <div id="practice-list" class="practice-list"></div>
+        </aside>
+        <section id="practice-detail" class="practice-detail stack">
+          <h3>No activity selected</h3>
+          <p class="muted">Pick one activity from the left to view tools.</p>
+        </section>
+      </div>
+    </section>
+
+    <details class="card stack" id="advanced-editor">
+      <summary><strong>Advanced: Create or Edit Practice</strong></summary>
+      <p class="muted">Use this only when you want to build or modify templates.</p>
+
+      <label class="form-label" for="practice-id">Practice ID (optional)</label>
+      <input id="practice-id" class="project-input" type="text" placeholder="Example: css-class-color-buttons">
+
+      <label class="form-label" for="practice-title">Title</label>
+      <input id="practice-title" class="project-input" type="text" placeholder="Example: Style Your First Button">
+
+      <label class="form-label" for="practice-topic">Topic</label>
+      <input id="practice-topic" class="project-input" type="text" value="First CSS Class">
+
+      <label class="form-label" for="practice-sequence">Display Order (optional)</label>
+      <input id="practice-sequence" class="project-input" type="number" min="1" step="1" placeholder="Example: 10">
+
+      <label class="form-label" for="practice-student-prompt">Student Prompt</label>
+      <textarea id="practice-student-prompt" class="code-input" rows="7" spellcheck="false" placeholder="Paste assignment instructions students will follow."></textarea>
+
+      <label class="form-label" for="practice-guide-text">Detailed Guide (for printable worksheet)</label>
+      <textarea id="practice-guide-text" class="code-input" rows="10" spellcheck="false" placeholder="Add extra step-by-step details for printed handouts."></textarea>
+
+      <label class="form-label" for="practice-starter-html">Starter index.html</label>
+      <textarea id="practice-starter-html" class="code-input" rows="12" spellcheck="false"></textarea>
+
+      <label class="form-label" for="practice-starter-css">Starter styles.css</label>
+      <textarea id="practice-starter-css" class="code-input" rows="10" spellcheck="false"></textarea>
+
+      <label class="form-label" for="practice-teacher-key">Teacher Key (answer key/rubric)</label>
+      <textarea id="practice-teacher-key" class="code-input" rows="9" spellcheck="false" placeholder="Keep expected solution notes and grading checkpoints here."></textarea>
+
+      <div class="actions">
+        <button id="save-practice" class="btn btn-primary" type="button">Save to Practice Bank</button>
+      </div>
+    </details>
+  </main>
+
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="/js/practice-bank-page.js"></script>
+</body>
+</html>

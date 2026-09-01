@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reference | Code with Morais</title>
+  <meta name="description" content="Student quick-reference sheet for HTML and CSS basics.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Code with Morais</a>
+    <nav class="nav-links">
+      <a href="/dashboard" data-scope="student admin">Dashboard</a>
+      <a href="/reference" data-scope="student admin">Reference</a>
+      <a href="/teacher" data-scope="admin">Teacher</a>
+      <a href="/assignments" data-scope="admin">Assignments</a>
+      <a href="/practice-bank" data-scope="admin">Practice Bank</a>
+    </nav>
+    <div id="auth-slot" class="auth-slot"></div>
+  </header>
+
+  <main class="shell stack">
+    <section class="hero reference-hero">
+      <p class="eyebrow">Student Reference</p>
+      <h1>HTML + CSS Basics Cheat Sheet</h1>
+      <p class="lead">Use this page while coding in the IDE. Every concept includes plain-language definitions and direct examples you can copy into your project.</p>
+      <div class="reference-jump-links">
+        <a href="#starter">Starter Skeleton</a>
+        <a href="#html-tags">HTML Tags</a>
+        <a href="#css-properties">CSS Properties</a>
+        <a href="#examples">Visual Examples</a>
+      </div>
+    </section>
+
+    <section class="reference-grid">
+      <article class="card reference-tip">
+        <h2>How To Use This</h2>
+        <p>Pick one tag or property, test it in your project, then save.</p>
+        <p>Use the examples exactly first, then modify one value at a time.</p>
+      </article>
+      <article class="card reference-tip">
+        <h2>Beginner Workflow</h2>
+        <p>1) Structure with HTML.</p>
+        <p>2) Style with CSS.</p>
+        <p>3) Refresh your preview and compare changes.</p>
+      </article>
+    </section>
+
+    <section id="starter" class="card stack">
+      <h2>Starter HTML Skeleton</h2>
+      <pre class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main&gt;
+    &lt;h1&gt;Hello world&lt;/h1&gt;
+    &lt;p&gt;Start building your page here.&lt;/p&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </section>
+
+    <section id="html-tags" class="card table-wrap">
+      <h2>HTML Tags</h2>
+      <p class="muted">Think of HTML as the content and structure of the page.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Definition</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;h1&gt; ... &lt;/h1&gt;</td>
+            <td>Main heading on a page.</td>
+            <td>&lt;h1&gt;My Portfolio&lt;/h1&gt;</td>
+          </tr>
+          <tr>
+            <td>&lt;p&gt; ... &lt;/p&gt;</td>
+            <td>Paragraph text.</td>
+            <td>&lt;p&gt;Welcome to my site.&lt;/p&gt;</td>
+          </tr>
+          <tr>
+            <td>&lt;a href="..."&gt; ... &lt;/a&gt;</td>
+            <td>Link to another page or site.</td>
+            <td>&lt;a href="https://example.com"&gt;Visit&lt;/a&gt;</td>
+          </tr>
+          <tr>
+            <td>&lt;img src="..." alt="..."&gt;</td>
+            <td>Displays an image. Use alt for accessibility.</td>
+            <td>&lt;img src="photo.jpg" alt="My photo"&gt;</td>
+          </tr>
+          <tr>
+            <td>&lt;ul&gt; / &lt;ol&gt; + &lt;li&gt;</td>
+            <td>Creates bulleted or numbered lists.</td>
+            <td>&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</td>
+          </tr>
+          <tr>
+            <td>&lt;div&gt; ... &lt;/div&gt;</td>
+            <td>Generic container for grouping content.</td>
+            <td>&lt;div class="card"&gt;...&lt;/div&gt;</td>
+          </tr>
+          <tr>
+            <td>&lt;section&gt; ... &lt;/section&gt;</td>
+            <td>Semantic section of related content.</td>
+            <td>&lt;section&gt;&lt;h2&gt;About&lt;/h2&gt;&lt;/section&gt;</td>
+          </tr>
+          <tr>
+            <td>&lt;button&gt; ... &lt;/button&gt;</td>
+            <td>Clickable action button.</td>
+            <td>&lt;button&gt;Submit&lt;/button&gt;</td>
+          </tr>
+          <tr>
+            <td>&lt;form&gt; ... &lt;/form&gt;</td>
+            <td>Groups input fields for user data.</td>
+            <td>&lt;form&gt;&lt;input type="text"&gt;&lt;/form&gt;</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="text"&gt;</td>
+            <td>Single-line text field.</td>
+            <td>&lt;input type="text" placeholder="Name"&gt;</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="css-properties" class="card table-wrap">
+      <h2>CSS Properties</h2>
+      <p class="muted">Think of CSS as the design layer that controls how HTML looks.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Definition</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>color</td>
+            <td>Sets text color.</td>
+            <td>color: #1e1f22;</td>
+          </tr>
+          <tr>
+            <td>background-color</td>
+            <td>Sets element background color.</td>
+            <td>background-color: #f4f7ff;</td>
+          </tr>
+          <tr>
+            <td>font-size</td>
+            <td>Controls text size.</td>
+            <td>font-size: 18px;</td>
+          </tr>
+          <tr>
+            <td>font-family</td>
+            <td>Changes the typeface.</td>
+            <td>font-family: Verdana, sans-serif;</td>
+          </tr>
+          <tr>
+            <td>margin</td>
+            <td>Adds outer spacing around an element.</td>
+            <td>margin: 16px;</td>
+          </tr>
+          <tr>
+            <td>padding</td>
+            <td>Adds inner spacing inside an element.</td>
+            <td>padding: 12px;</td>
+          </tr>
+          <tr>
+            <td>border</td>
+            <td>Draws an outline around an element.</td>
+            <td>border: 1px solid #223150;</td>
+          </tr>
+          <tr>
+            <td>display</td>
+            <td>Defines layout behavior.</td>
+            <td>display: flex;</td>
+          </tr>
+          <tr>
+            <td>justify-content</td>
+            <td>Aligns flex items horizontally.</td>
+            <td>justify-content: space-between;</td>
+          </tr>
+          <tr>
+            <td>align-items</td>
+            <td>Aligns flex items vertically.</td>
+            <td>align-items: center;</td>
+          </tr>
+          <tr>
+            <td>grid-template-columns</td>
+            <td>Sets the number/size of grid columns.</td>
+            <td>grid-template-columns: 1fr 1fr;</td>
+          </tr>
+          <tr>
+            <td>border-radius</td>
+            <td>Rounds element corners.</td>
+            <td>border-radius: 12px;</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="examples" class="stack">
+      <article class="card stack">
+        <h2>Example: Styled Card</h2>
+        <div class="example-grid">
+          <div>
+            <h3 class="reference-subtitle">Code</h3>
+            <pre class="code-block">&lt;div class="profile-card"&gt;
+  &lt;h2&gt;Marco Morais&lt;/h2&gt;
+  &lt;p&gt;Web Design Student&lt;/p&gt;
+  &lt;button&gt;View Project&lt;/button&gt;
+&lt;/div&gt;
+
+.profile-card {
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  padding: 16px;
+  width: 260px;
+}
+
+.profile-card h2 {
+  margin-top: 0;
+}</pre>
+          </div>
+          <div>
+            <h3 class="reference-subtitle">What It Looks Like</h3>
+            <div class="reference-render-surface">
+              <div class="sample-card">
+                <h2>Marco Morais</h2>
+                <p>Web Design Student</p>
+                <button type="button">View Project</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card stack">
+        <h2>Example: Navigation Row</h2>
+        <div class="example-grid">
+          <div>
+            <h3 class="reference-subtitle">Code</h3>
+            <pre class="code-block">&lt;nav class="sample-nav"&gt;
+  &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;a href="#"&gt;Projects&lt;/a&gt;
+  &lt;a href="#"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+.sample-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.sample-nav a {
+  text-decoration: none;
+  background: #1b2a44;
+  color: #e8f1ff;
+  padding: 8px 12px;
+  border-radius: 999px;
+}</pre>
+          </div>
+          <div>
+            <h3 class="reference-subtitle">What It Looks Like</h3>
+            <div class="reference-render-surface">
+              <nav class="sample-nav-render" aria-label="Sample navigation">
+                <a href="#">Home</a>
+                <a href="#">Projects</a>
+                <a href="#">Contact</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="card stack">
+      <h2>Common Selectors</h2>
+      <pre class="code-block">/* Element selector */
+p {
+  color: #1e1f22;
+}
+
+/* Class selector */
+.card {
+  padding: 16px;
+}
+
+/* ID selector */
+#hero {
+  margin-top: 20px;
+}
+
+/* Descendant selector */
+.nav a {
+  text-decoration: none;
+}
+
+/* Pseudo-class */
+button:hover {
+  opacity: 0.9;
+}</pre>
+    </section>
+  </main>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

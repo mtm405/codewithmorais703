@@ -1,0 +1,17 @@
+{
+  "name": "new-coding-site",
+  "version": "1.0.0",
+  "description": "Clean-slate static website scaffold for a new coding curriculum.",
+  "private": true,
+  "scripts": {
+    "dev": "npx firebase emulators:start --only hosting",
+    "deploy": "npx firebase deploy --only hosting,firestore:rules"
+  },
+  "keywords": [
+    "firebase-hosting",
+    "education",
+    "web"
+  ],
+  "author": "",
+  "license": "MIT"
+}

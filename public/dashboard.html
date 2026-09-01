@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Code with Morais</title>
+  <meta name="description" content="Student dashboard for creating projects, practicing vocabulary, and completing mini web design challenges.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Code with Morais</a>
+    <nav class="nav-links">
+      <a href="/dashboard" data-scope="student admin">Dashboard</a>
+      <a href="/reference" data-scope="student admin">Reference</a>
+      <a href="/teacher" data-scope="admin">Teacher</a>
+      <a href="/assignments" data-scope="admin">Assignments</a>
+      <a href="/practice-bank" data-scope="admin">Practice Bank</a>
+    </nav>
+    <div id="auth-slot" class="auth-slot"></div>
+  </header>
+
+  <main class="shell stack">
+    <section class="hero dashboard-hero">
+      <p class="eyebrow">Student Dashboard</p>
+      <h1>Build Projects, Practice Skills, Stay Ready</h1>
+      <p class="lead">Your projects stay at the center. Use the side tools for vocabulary boosts, mini CSS games, and a quick challenge before coding.</p>
+      <div class="hero-signal-stats">
+        <span id="dashboard-clock" class="status-chip">Time: --:--</span>
+        <span class="status-chip">Project Focus</span>
+        <span class="status-chip">Classroom Ready</span>
+      </div>
+    </section>
+
+    <section class="card stack bell-ringer-card">
+      <div class="bell-ringer-head">
+        <h2>Bell Ringer</h2>
+        <span id="bell-ringer-date" class="status-chip">Date: --</span>
+      </div>
+      <p class="muted">Complete today's 2-question HTML/CSS bug hunt. Your answers are saved to your account for teacher review.</p>
+      <form id="bell-ringer-form" class="stack">
+        <div id="bell-ringer-questions" class="stack"></div>
+        <div class="actions">
+          <button id="bell-ringer-submit" class="btn btn-primary" type="submit">Submit Bell Ringer</button>
+          <span id="bell-ringer-state" class="status-chip">Loading daily questions...</span>
+        </div>
+      </form>
+    </section>
+
+    <section class="dashboard-layout">
+      <div class="stack">
+        <section class="card stack">
+          <h2>Create a New Program</h2>
+          <p class="muted">Language: HTML/CSS only</p>
+          <div class="actions">
+            <input id="project-title" class="project-input" type="text" placeholder="Name your program (optional)">
+            <button id="create-project" class="btn btn-primary">Create Program</button>
+            <span id="projects-state" class="status-chip">Sign in to load projects.</span>
+          </div>
+        </section>
+
+        <section class="card table-wrap">
+          <h2>Your Projects</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Saves</th>
+                <th>Updated</th>
+                <th>Status</th>
+                <th>Grade</th>
+                <th>Late</th>
+                <th>Open</th>
+                <th>Rename</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody id="project-rows">
+              <tr><td colspan="9" class="muted">No projects loaded yet.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <aside class="dashboard-side stack" aria-label="Learning tools">
+        <section class="card widget-card stack">
+          <h2>Vocab Booster</h2>
+          <p id="vocab-word" class="widget-emphasis">Selector</p>
+          <p id="vocab-definition" class="muted">Click Reveal Definition.</p>
+          <p id="vocab-example" class="muted">Example: -</p>
+          <div class="actions">
+            <button id="vocab-reveal" class="btn btn-secondary" type="button">Reveal Definition</button>
+            <button id="vocab-next" class="btn btn-primary" type="button">Next Word</button>
+          </div>
+        </section>
+
+        <section class="card widget-card stack">
+          <h2>Mini CSS Game</h2>
+          <p id="css-game-question" class="widget-emphasis">Loading challenge...</p>
+          <div id="css-game-options" class="stack"></div>
+          <p id="css-game-state" class="muted">Answer to build your streak.</p>
+          <span id="css-game-score" class="status-chip">Score: 0</span>
+        </section>
+
+        <section class="card widget-card stack">
+          <h2>Quick Build Prompt</h2>
+          <p id="coding-challenge" class="muted">Press Generate for a new micro challenge.</p>
+          <div class="actions">
+            <button id="next-challenge" class="btn btn-secondary" type="button">Generate</button>
+            <a class="btn btn-primary" href="/ide">Open IDE</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="/js/students-page.js"></script>
+  <script type="module" src="/js/dashboard-page.js"></script>
+</body>
+</html>

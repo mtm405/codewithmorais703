@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+*.sqlite3 # If you have a local SQLite database file
+.env     # Don't copy your local .env to production
+.git/
+.gitignore
+.DS_Store
+*.log

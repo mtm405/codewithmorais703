@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDE | Code with Morais</title>
+  <meta name="description" content="In-browser HTML and CSS editor with cloud autosave.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="ide-page">
+  <header class="topbar">
+    <a class="brand" href="/">Code with Morais</a>
+    <nav class="nav-links">
+      <a href="/dashboard" data-scope="student admin">Dashboard</a>
+      <a href="/reference" data-scope="student admin">Reference</a>
+      <a href="/teacher" data-scope="admin">Teacher</a>
+      <a href="/assignments" data-scope="admin">Assignments</a>
+      <a href="/practice-bank" data-scope="admin">Practice Bank</a>
+    </nav>
+    <div id="auth-slot" class="auth-slot"></div>
+  </header>
+
+  <main class="shell ide-shell">
+    <section class="ide-header">
+      <h1>HTML + CSS IDE</h1>
+      <div class="actions">
+        <span id="save-state" class="status-chip">Loading IDE...</span>
+        <button id="open-assignment" class="btn btn-secondary" type="button">Assignment</button>
+        <button id="open-feedback" class="btn btn-secondary" type="button">View Feedback</button>
+        <button id="toggle-fullscreen" class="btn btn-secondary" type="button">IDE Only</button>
+        <button id="save-now" class="btn btn-secondary">Save Now</button>
+        <button id="reset-code" class="btn btn-primary">Reset Starter Code</button>
+      </div>
+    </section>
+
+    <aside id="assignment-brief" class="assignment-panel" aria-hidden="true" aria-live="polite">
+      <div class="assignment-panel-head">
+        <p id="assignment-brief-title" class="assignment-brief-title">Assignment: -</p>
+        <div class="actions">
+          <button id="assignment-brief-copy" class="btn btn-secondary" type="button">Copy Instructions</button>
+          <button id="assignment-brief-close" class="btn btn-secondary" type="button">Close</button>
+        </div>
+      </div>
+      <pre id="assignment-brief-text" class="assignment-brief-text"></pre>
+      <div id="assignment-task-tracker" class="assignment-task-tracker" hidden>
+        <p id="assignment-task-progress" class="muted">Task Progress: 0/0</p>
+        <p id="assignment-task-current" class="assignment-task-current">Current Task: -</p>
+        <p id="assignment-task-state" class="muted">Check your task to unlock the next one.</p>
+        <div class="actions">
+          <button id="assignment-task-check" class="btn btn-secondary" type="button">Check Task</button>
+          <button id="assignment-task-done" class="btn btn-secondary" type="button">Mark Done</button>
+          <button id="assignment-task-next" class="btn btn-primary" type="button">Next Task</button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="ide-layout ide-layout-full">
+      <article class="editor-shell">
+        <div class="editor-toolbar">
+          <button id="tab-html" class="editor-btn active">index.html</button>
+          <button id="tab-css" class="editor-btn">styles.css</button>
+        </div>
+        <div id="editor" class="editor-canvas"></div>
+      </article>
+      <div id="pane-divider" class="pane-divider" role="separator" aria-label="Resize editor and preview" aria-orientation="vertical"></div>
+      <iframe id="preview" class="preview-frame" title="Live Preview"></iframe>
+    </section>
+
+    <aside id="feedback-drawer" class="feedback-drawer" aria-hidden="true">
+      <div class="feedback-drawer-head">
+        <h2>Teacher Feedback</h2>
+        <button id="feedback-close" class="btn btn-secondary" type="button">Close</button>
+      </div>
+      <div class="feedback-pill-row">
+        <span id="feedback-pill-status" class="status-chip">Status: -</span>
+        <span id="feedback-pill-grade" class="status-chip">Grade: -</span>
+        <span id="feedback-pill-late" class="status-chip">Late: No</span>
+      </div>
+      <p id="feedback-updated" class="muted">Last updated: -</p>
+      <article>
+        <h3>Comments</h3>
+        <pre id="feedback-comments" class="code-block"></pre>
+      </article>
+      <article>
+        <h3>Next Steps</h3>
+        <pre id="feedback-next" class="code-block"></pre>
+      </article>
+    </aside>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="/js/ide-page.js"></script>
+</body>
+</html>

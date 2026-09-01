@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignments | Code with Morais</title>
+  <meta name="description" content="Teacher-only assignment publisher for creating student starter projects in bulk.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Code with Morais</a>
+    <nav class="nav-links">
+      <a href="/dashboard" data-scope="student admin">Dashboard</a>
+      <a href="/reference" data-scope="student admin">Reference</a>
+      <a href="/teacher" data-scope="admin">Teacher</a>
+      <a href="/assignments" data-scope="admin">Assignments</a>
+      <a href="/practice-bank" data-scope="admin">Practice Bank</a>
+    </nav>
+    <div id="auth-slot" class="auth-slot"></div>
+  </header>
+
+  <main class="shell stack">
+    <section class="hero">
+      <p class="eyebrow">Teacher Tools</p>
+      <h1>Create Assignments for All Students</h1>
+      <p class="lead">Paste a full starter template once, then publish the project to every student account so they can modify it in their own sandbox.</p>
+    </section>
+
+    <section class="card stack">
+      <h2>New Assignment</h2>
+      <label class="form-label" for="assignment-title">Assignment Name</label>
+      <input id="assignment-title" class="project-input" type="text" placeholder="Example: Landing Page Redesign">
+
+      <label class="form-label" for="assignment-html">Starter index.html</label>
+      <textarea id="assignment-html" class="code-input" rows="16" spellcheck="false"></textarea>
+
+      <label class="form-label" for="assignment-css">Starter styles.css (optional)</label>
+      <textarea id="assignment-css" class="code-input" rows="12" spellcheck="false"></textarea>
+
+      <div class="actions">
+        <button id="publish-assignment" class="btn btn-primary" type="button">Publish to All Students</button>
+        <span id="assignment-state" class="status-chip">Teacher sign-in required.</span>
+      </div>
+    </section>
+
+    <section class="card table-wrap">
+      <h2>Recent Assignments</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Assigned Projects</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody id="assignment-rows">
+          <tr><td colspan="3" class="muted">No assignments yet.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="/js/assignments-page.js"></script>
+</body>
+</html>

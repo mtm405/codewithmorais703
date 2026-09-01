@@ -1,0 +1,84 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isTeacher() {
+      return isSignedIn() && request.auth.token.email == 'marco.morais@imaginenorthport.com';
+    }
+
+    match /users/{userId} {
+      allow create: if isOwner(userId);
+      allow read: if isOwner(userId) || isTeacher();
+      allow update: if isOwner(userId);
+      allow delete: if false;
+    }
+
+    match /workspaces/{workspaceId} {
+      allow get: if isSignedIn()
+        && (
+          isTeacher()
+          || resource.data.ownerId == request.auth.uid
+          || (resource == null && workspaceId == request.auth.uid + '_starter')
+        );
+      allow list: if isSignedIn()
+        && (
+          resource.data.ownerId == request.auth.uid
+          || isTeacher()
+        );
+      allow create: if isSignedIn()
+        && (
+          request.resource.data.ownerId == request.auth.uid
+          || isTeacher()
+        );
+      allow update: if isSignedIn()
+        && resource.data.ownerId == request.auth.uid
+        && request.resource.data.ownerId == resource.data.ownerId;
+      allow delete: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+    }
+
+    match /assignments/{assignmentId} {
+      allow read, write: if isTeacher();
+    }
+
+    match /practiceLibrary/{practiceId} {
+      allow read, write: if isTeacher();
+    }
+
+    match /projectFeedback/{projectId} {
+      allow create, update, delete: if isTeacher();
+      allow read: if isTeacher() || (isSignedIn() && resource.data.studentUid == request.auth.uid);
+    }
+
+    match /bellRingers/{entryId} {
+      allow create: if isSignedIn() && request.resource.data.studentUid == request.auth.uid;
+      allow read: if isTeacher() || (isSignedIn() && resource.data.studentUid == request.auth.uid);
+      allow update: if isSignedIn()
+        && resource.data.studentUid == request.auth.uid
+        && request.resource.data.studentUid == resource.data.studentUid;
+      allow delete: if false;
+    }
+
+    match /userProgress/{userId} {
+      allow create: if isOwner(userId);
+      allow read: if isOwner(userId) || isTeacher();
+      allow update: if isOwner(userId);
+      allow delete: if false;
+    }
+
+    match /courseCatalog/{docId} {
+      allow read: if true;
+      allow write: if isTeacher();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
