@@ -7,7 +7,7 @@
   <meta name="description" content="Student dashboard for creating projects, practicing vocabulary, and completing mini web design challenges.">
   <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body class="dashboard-page">
   <header class="topbar">
     <a class="brand" href="/">Code with Morais</a>
     <nav class="nav-links">
@@ -44,7 +44,7 @@
     </section>
 
     <section class="dashboard-layout">
-      <div class="stack">
+      <div class="stack dashboard-main-column">
         <section class="card stack">
           <h2>Create a New Program</h2>
           <p class="muted">Language: HTML/CSS only</p>
@@ -76,47 +76,92 @@
             </tbody>
           </table>
         </section>
+
+        <section class="card syntax-guide-card stack">
+          <h2>CSS Syntax Guide: Make It Work Every Time</h2>
+          <p class="muted">CSS follows a strict pattern. If one part is missing, the browser can ignore the style rule.</p>
+
+          <div class="syntax-grid">
+            <article class="syntax-item">
+              <h3>1) Core Pattern</h3>
+              <pre class="code-block syntax-code">selector {
+  property: value;
+}</pre>
+              <p class="muted">You must use all 3 parts: selector, property, and value. Keep braces and semicolons in place.</p>
+            </article>
+
+            <article class="syntax-item">
+              <h3>2) Keys You Need</h3>
+              <ul class="syntax-list">
+                <li><strong>Selector:</strong> targets what to style, such as p, .card, or #menu.</li>
+                <li><strong>Property:</strong> what changes, like color, margin, display, width.</li>
+                <li><strong>Value:</strong> the setting for that property, like #1d4ed8, 16px, flex.</li>
+                <li><strong>Semicolon:</strong> ends each declaration line.</li>
+                <li><strong>Curly braces:</strong> wrap all declarations for the selector.</li>
+              </ul>
+            </article>
+
+            <article class="syntax-item">
+              <h3>3) HTML + CSS Link</h3>
+              <pre class="code-block syntax-code">&lt;link rel="stylesheet" href="styles.css"&gt;</pre>
+              <p class="muted">Put this line inside &lt;head&gt; in HTML so your CSS file actually loads.</p>
+            </article>
+
+            <article class="syntax-item">
+              <h3>4) Common Bugs</h3>
+              <ul class="syntax-list">
+                <li>Misspelled properties like widht instead of width.</li>
+                <li>Class mismatch: .card-title in CSS but class="cardtitle" in HTML.</li>
+                <li>Missing semicolon or closing brace in a rule block.</li>
+                <li>Using # for a class or . for an id by mistake.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
       </div>
 
       <aside class="dashboard-side stack" aria-label="Learning tools">
-        <section class="card widget-card stack">
-          <h2>Vocab Booster</h2>
-          <p id="vocab-word" class="widget-emphasis">Selector</p>
-          <p id="vocab-definition" class="muted">Click Reveal Definition.</p>
-          <p id="vocab-example" class="muted">Example: -</p>
-          <div class="actions">
-            <button id="vocab-reveal" class="btn btn-secondary" type="button">Reveal Definition</button>
-            <button id="vocab-next" class="btn btn-primary" type="button">Next Word</button>
-          </div>
-        </section>
+        <h2 class="dashboard-tools-title">Interactive Activities</h2>
+        <div class="dashboard-activity-grid">
+          <section class="card widget-card stack">
+            <h3>Vocab Booster</h3>
+            <p id="vocab-word" class="widget-emphasis">Selector</p>
+            <p id="vocab-definition" class="muted">Click Reveal Definition.</p>
+            <p id="vocab-example" class="muted">Example: -</p>
+            <div class="actions">
+              <button id="vocab-reveal" class="btn btn-secondary" type="button">Reveal Definition</button>
+              <button id="vocab-next" class="btn btn-primary" type="button">Next Word</button>
+            </div>
+          </section>
 
-        <section class="card widget-card stack">
-          <h2>Mini CSS Game</h2>
-          <p id="css-game-question" class="widget-emphasis">Loading challenge...</p>
-          <div id="css-game-options" class="stack"></div>
-          <p id="css-game-state" class="muted">Answer to build your streak.</p>
-          <span id="css-game-score" class="status-chip">Score: 0</span>
-        </section>
+          <section class="card widget-card stack">
+            <h3>Mini CSS Game</h3>
+            <p id="css-game-question" class="widget-emphasis">Loading challenge...</p>
+            <div id="css-game-options" class="stack"></div>
+            <p id="css-game-state" class="muted">Answer to build your streak.</p>
+            <span id="css-game-score" class="status-chip">Score: 0</span>
+          </section>
 
-        <section class="card widget-card stack">
-          <h2>Quick Build Prompt</h2>
-          <p id="coding-challenge" class="muted">Press Generate for a new micro challenge.</p>
-          <div class="actions">
-            <button id="next-challenge" class="btn btn-secondary" type="button">Generate</button>
-            <a class="btn btn-primary" href="/ide">Open IDE</a>
-          </div>
-        </section>
+          <section class="card widget-card stack">
+            <h3>Quick Build Prompt</h3>
+            <p id="coding-challenge" class="muted">Press Generate for a new micro challenge.</p>
+            <div class="actions">
+              <button id="next-challenge" class="btn btn-secondary" type="button">Generate</button>
+              <a class="btn btn-primary" href="/ide">Open IDE</a>
+            </div>
+          </section>
 
-        <section class="card widget-card stack">
-          <h2>Bug Fix Sprint</h2>
-          <pre id="bug-snippet" class="code-block widget-code"></pre>
-          <p id="bug-state" class="muted">Find the bug and explain the fix before revealing.</p>
-          <div class="actions">
-            <button id="bug-reveal" class="btn btn-secondary" type="button">Reveal Fix</button>
-            <button id="next-bug" class="btn btn-primary" type="button">Next Bug</button>
-          </div>
-          <p id="bug-answer" class="muted"></p>
-        </section>
+          <section class="card widget-card stack">
+            <h3>Bug Fix Sprint</h3>
+            <pre id="bug-snippet" class="code-block widget-code"></pre>
+            <p id="bug-state" class="muted">Find the bug and explain the fix before revealing.</p>
+            <div class="actions">
+              <button id="bug-reveal" class="btn btn-secondary" type="button">Reveal Fix</button>
+              <button id="next-bug" class="btn btn-primary" type="button">Next Bug</button>
+            </div>
+            <p id="bug-answer" class="muted"></p>
+          </section>
+        </div>
       </aside>
     </section>
   </main>

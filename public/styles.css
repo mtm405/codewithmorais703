@@ -251,9 +251,67 @@ body::before {
 
 .dashboard-welcome {
   background:
-    radial-gradient(600px 240px at 88% -40%, rgba(107, 194, 255, 0.2) 0%, transparent 65%),
-    radial-gradient(420px 220px at -12% 110%, rgba(35, 201, 169, 0.16) 0%, transparent 66%),
-    linear-gradient(140deg, rgba(20, 33, 53, 0.96), rgba(14, 22, 37, 0.95));
+    radial-gradient(620px 240px at 90% -35%, rgba(10, 132, 255, 0.18) 0%, transparent 65%),
+    radial-gradient(420px 220px at -10% 112%, rgba(255, 122, 89, 0.16) 0%, transparent 66%),
+    linear-gradient(145deg, rgba(244, 248, 255, 0.96), rgba(236, 243, 253, 0.95));
+  border: 1px solid rgba(128, 156, 203, 0.35);
+  box-shadow: 0 18px 44px rgba(28, 53, 93, 0.12);
+}
+
+.dashboard-page {
+  --bg: #eff4fb;
+  --panel: #f8fbff;
+  --panel-2: #ffffff;
+  --ink: #14233e;
+  --muted: #4f6284;
+  --accent: #0a84ff;
+  --accent-dark: #0068d6;
+  --mint: #0f5db8;
+  --line: #cedbf0;
+  --shadow: 0 14px 32px rgba(21, 40, 71, 0.12);
+  background:
+    radial-gradient(920px 340px at 90% -12%, rgba(10, 132, 255, 0.14) 0%, transparent 62%),
+    radial-gradient(700px 290px at -6% 16%, rgba(255, 122, 89, 0.12) 0%, transparent 64%),
+    var(--bg);
+}
+
+.dashboard-page::before {
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(9, 25, 51, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(9, 25, 51, 0.07) 1px, transparent 1px);
+}
+
+.dashboard-page .topbar {
+  background: rgba(248, 251, 255, 0.88);
+  border-bottom-color: rgba(152, 179, 220, 0.4);
+}
+
+.dashboard-page .brand {
+  color: #123f7d;
+}
+
+.dashboard-page .nav-links a {
+  color: #2e4f7f;
+}
+
+.dashboard-page .nav-links a:hover,
+.dashboard-page .nav-links a.active {
+  background: rgba(10, 132, 255, 0.12);
+  border-color: rgba(10, 132, 255, 0.32);
+  color: #08366d;
+}
+
+.dashboard-page .card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(160, 185, 222, 0.46);
+  box-shadow: 0 12px 30px rgba(19, 42, 77, 0.09);
+}
+
+.dashboard-page .status-chip {
+  border-color: rgba(137, 167, 212, 0.42);
+  background: rgba(255, 255, 255, 0.72);
+  color: #2f4d7a;
 }
 
 .dashboard-welcome-grid {
@@ -267,12 +325,13 @@ body::before {
   margin: 0;
   font-size: clamp(1.9rem, 4.2vw, 2.9rem);
   line-height: 1.06;
+  color: #112f55;
 }
 
 .dashboard-time-card {
-  border: 1px solid rgba(107, 194, 255, 0.35);
+  border: 1px solid rgba(116, 152, 209, 0.48);
   border-radius: 14px;
-  background: rgba(11, 21, 36, 0.82);
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.96), rgba(238, 246, 255, 0.94));
   padding: 14px;
   display: grid;
   align-content: start;
@@ -281,7 +340,7 @@ body::before {
 
 .dashboard-time-label {
   margin: 0;
-  color: #9ac4ff;
+  color: #496d9f;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-size: 0.76rem;
@@ -291,15 +350,19 @@ body::before {
 .dashboard-time {
   margin: 0;
   font-size: clamp(1.2rem, 2.8vw, 1.8rem);
-  color: #dcf6ff;
+  color: #134487;
   font-family: "JetBrains Mono", "Consolas", monospace;
 }
 
 .dashboard-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr);
-  gap: 16px;
+  gap: 18px;
   align-items: start;
+}
+
+.dashboard-main-column {
+  gap: 16px;
 }
 
 .dashboard-side {
@@ -307,14 +370,26 @@ body::before {
   top: 82px;
 }
 
+.dashboard-tools-title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #234a83;
+}
+
+.dashboard-activity-grid {
+  display: grid;
+  gap: 12px;
+}
+
 .widget-card {
-  background: linear-gradient(145deg, rgba(18, 31, 52, 0.93), rgba(15, 24, 39, 0.94));
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(244, 249, 255, 0.96));
+  border-color: rgba(162, 191, 226, 0.45);
 }
 
 .widget-emphasis {
   margin: 0;
   font-size: 1.12rem;
-  color: #ddf5ff;
+  color: #173f75;
   font-weight: 700;
 }
 
@@ -326,6 +401,46 @@ body::before {
 .widget-code {
   min-height: 100px;
   max-height: 180px;
+}
+
+.syntax-guide-card {
+  background: linear-gradient(150deg, rgba(253, 255, 255, 0.98), rgba(243, 249, 255, 0.98));
+}
+
+.syntax-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.syntax-item {
+  border: 1px solid rgba(166, 194, 230, 0.5);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 12px;
+}
+
+.syntax-item h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #1d487f;
+  font-size: 1rem;
+}
+
+.syntax-code {
+  min-height: 88px;
+  max-height: 220px;
+  background: #f2f7ff;
+  color: #1f355b;
+  border-color: rgba(156, 188, 230, 0.5);
+}
+
+.syntax-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #2f4d7a;
+  display: grid;
+  gap: 8px;
 }
 
 .hero h1 {
@@ -1123,6 +1238,10 @@ th {
   }
 
   .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .syntax-grid {
     grid-template-columns: 1fr;
   }
 
