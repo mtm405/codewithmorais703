@@ -3,7 +3,6 @@ import {
   getProjectFeedback,
   getStudentProjects,
   getTeacherStudentRows,
-  listStudentBellRingerSubmissions,
   listStudentProjectFeedback,
   saveProjectFeedback
 } from "./data-store.js";
@@ -12,8 +11,6 @@ const rowsEl = document.getElementById("student-rows");
 const studentProjectsTitleEl = document.getElementById("student-projects-title");
 const studentProjectsStateEl = document.getElementById("student-projects-state");
 const studentProjectRowsEl = document.getElementById("student-project-rows");
-const bellRingerStateEl = document.getElementById("bell-ringer-state");
-const bellRingerRowsEl = document.getElementById("bell-ringer-rows");
 const reviewTitleEl = document.getElementById("review-title");
 const reviewStateEl = document.getElementById("review-state");
 const studentHtmlEl = document.getElementById("student-html");
@@ -367,38 +364,6 @@ const renderProjectsMessage = (message) => {
   studentProjectRowsEl.innerHTML = `<tr><td colspan=\"6\" class=\"muted\">${escapeHtml(message)}</td></tr>`;
 };
 
-const formatBellRingerAnswers = (answers) => {
-  if (!Array.isArray(answers) || !answers.length) return "-";
-  return answers.map((answer, index) => {
-    const marker = answer.isCorrect ? "OK" : "X";
-    const selected = answer.selected || "(blank)";
-    return `${index + 1}) ${marker}: ${selected}`;
-  }).join("\n");
-};
-
-const renderBellRingerRows = (rows) => {
-  if (!bellRingerRowsEl) return;
-
-  if (!rows.length) {
-    bellRingerRowsEl.innerHTML = "<tr><td colspan=\"4\" class=\"muted\">No bell ringer submissions yet.</td></tr>";
-    if (bellRingerStateEl) bellRingerStateEl.textContent = "No submissions found for this student.";
-    return;
-  }
-
-  bellRingerRowsEl.innerHTML = rows.map((row) => [
-    "<tr>",
-    `<td>${escapeHtml(row.dateKey || "-")}</td>`,
-    `<td>${escapeHtml(`${row.score || 0}/${row.total || 0}`)}</td>`,
-    `<td>${formatTimestamp(row.updatedAt)}</td>`,
-    `<td><pre class=\"bell-ringer-answer-summary\">${escapeHtml(formatBellRingerAnswers(row.answers))}</pre></td>`,
-    "</tr>"
-  ].join("")).join("");
-
-  if (bellRingerStateEl) {
-    bellRingerStateEl.textContent = `${rows.length} recent submission${rows.length === 1 ? "" : "s"} loaded.`;
-  }
-};
-
 const renderMessage = (message) => {
   if (!rowsEl) return;
   rowsEl.innerHTML = `<tr><td colspan=\"7\" class=\"muted\">${escapeHtml(message)}</td></tr>`;
@@ -502,25 +467,17 @@ const loadStudentProjects = async (uid, name) => {
   if (studentProjectsStateEl) {
     studentProjectsStateEl.textContent = "Loading student projects...";
   }
-  if (bellRingerStateEl) {
-    bellRingerStateEl.textContent = "Loading bell ringers...";
-  }
   renderProjectsMessage("Loading...");
-  if (bellRingerRowsEl) {
-    bellRingerRowsEl.innerHTML = "<tr><td colspan=\"4\" class=\"muted\">Loading...</td></tr>";
-  }
 
   try {
-    const [projects, feedbackRows, bellRingerRows] = await Promise.all([
+    const [projects, feedbackRows] = await Promise.all([
       getStudentProjects(uid),
-      listStudentProjectFeedback(uid),
-      listStudentBellRingerSubmissions(uid)
+      listStudentProjectFeedback(uid)
     ]);
 
     const feedbackMap = new Map(feedbackRows.map((row) => [row.projectId, row]));
     selectedStudentProjects = projects;
     renderStudentProjects(projects, name, feedbackMap);
-    renderBellRingerRows(bellRingerRows);
 
     if (studentProjectsStateEl) {
       studentProjectsStateEl.textContent = `${projects.length} project${projects.length === 1 ? "" : "s"} found.`;

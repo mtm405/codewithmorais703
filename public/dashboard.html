@@ -21,30 +21,26 @@
   </header>
 
   <main class="shell stack">
-    <section class="hero dashboard-hero">
-      <p class="eyebrow">Student Dashboard</p>
-      <h1>Build Projects, Practice Skills, Stay Ready</h1>
-      <p class="lead">Your projects stay at the center. Use the side tools for vocabulary boosts, mini CSS games, and a quick challenge before coding.</p>
-      <div class="hero-signal-stats">
-        <span id="dashboard-clock" class="status-chip">Time: --:--</span>
-        <span class="status-chip">Project Focus</span>
-        <span class="status-chip">Classroom Ready</span>
-      </div>
-    </section>
-
-    <section class="card stack bell-ringer-card">
-      <div class="bell-ringer-head">
-        <h2>Bell Ringer</h2>
-        <span id="bell-ringer-date" class="status-chip">Date: --</span>
-      </div>
-      <p class="muted">Complete today's 2-question HTML/CSS bug hunt. Your answers are saved to your account for teacher review.</p>
-      <form id="bell-ringer-form" class="stack">
-        <div id="bell-ringer-questions" class="stack"></div>
-        <div class="actions">
-          <button id="bell-ringer-submit" class="btn btn-primary" type="submit">Submit Bell Ringer</button>
-          <span id="bell-ringer-state" class="status-chip">Loading daily questions...</span>
+    <section class="dashboard-welcome card">
+      <div class="dashboard-welcome-grid">
+        <div>
+          <p class="eyebrow">Student Dashboard</p>
+          <h1 id="dashboard-greeting" class="dashboard-greeting">Welcome back, Coder</h1>
+          <p class="lead">Start by opening a saved project or create a new one. Then sharpen your skills with quick interactive activities.</p>
+          <div class="hero-signal-stats">
+            <span class="status-chip">Project Focus</span>
+            <span class="status-chip">HTML + CSS</span>
+            <span id="dashboard-focus" class="status-chip">Today: Debug styling issues</span>
+          </div>
         </div>
-      </form>
+
+        <aside class="dashboard-time-card">
+          <p class="dashboard-time-label">Current Class Time</p>
+          <p id="dashboard-clock" class="dashboard-time">--:--:--</p>
+          <p id="dashboard-date" class="muted">--</p>
+          <a class="btn btn-primary" href="/ide">Open IDE</a>
+        </aside>
+      </div>
     </section>
 
     <section class="dashboard-layout">
@@ -109,6 +105,17 @@
             <button id="next-challenge" class="btn btn-secondary" type="button">Generate</button>
             <a class="btn btn-primary" href="/ide">Open IDE</a>
           </div>
+        </section>
+
+        <section class="card widget-card stack">
+          <h2>Bug Fix Sprint</h2>
+          <pre id="bug-snippet" class="code-block widget-code"></pre>
+          <p id="bug-state" class="muted">Find the bug and explain the fix before revealing.</p>
+          <div class="actions">
+            <button id="bug-reveal" class="btn btn-secondary" type="button">Reveal Fix</button>
+            <button id="next-bug" class="btn btn-primary" type="button">Next Bug</button>
+          </div>
+          <p id="bug-answer" class="muted"></p>
         </section>
       </aside>
     </section>
